@@ -2,6 +2,7 @@ import { Lotto } from "../model/lotto.js";
 import { getPrice } from "../utils/dom.js";
 import { getRandomNumber } from "../utils/getRandomNumber.js";
 import { isValidPrice } from "../utils/valid.js";
+import { renderTicket } from "../view/renderPurchaseLotto.js";
 
 let $purchaseLottoBtn = document.querySelector(".purchase-btn");
 
@@ -28,6 +29,7 @@ function handlerPurchaseLotto() {
   if (isValidPrice(price)) {
     let tickets = countingTicket(price);
     getLotto(tickets);
+    renderTicket(tickets);
   }
 }
 
