@@ -18,12 +18,12 @@ function countingTicket(price) {
 //티켓수로 for문을 돌려서 랜덤수를 생성해서 로또이켓을 생성한다.
 function getLotto(tickets) {
   let lottos = [];
-  getState();
-
   for (var i = 0; i < tickets; i++) {
     let lotto = new Lotto(getRandomNumber());
+    lottos.push(lotto);
   }
   setStateTicket(lottos);
+  getState();
   console.log(lottos);
 }
 

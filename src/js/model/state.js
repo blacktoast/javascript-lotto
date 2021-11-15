@@ -2,8 +2,8 @@ let state = {
   tickets: [],
 };
 
-export function setStateTicket(state) {
-  state.tickets.push(state);
+export function setStateTicket(states) {
+  state.tickets = states;
 }
 export function getState() {
   console.log(state);
