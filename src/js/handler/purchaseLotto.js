@@ -30,7 +30,9 @@ function handlerPurchaseLotto() {
     let tickets = countingTicket(price);
     getLotto(tickets);
     renderTicket(tickets);
+    return;
   }
+  alert("1000원 이하는 구입할수없습니다");
 }
 
 export function purchaseLotto() {
