@@ -7,7 +7,9 @@ const App = () => {
   console.log("object");
   purchaseLotto();
   initModalEvents();
-  console.log($lottoNumbersToggleButton);
+  $lottoNumbersToggleButton.addEventListener("click", (e) => {
+    console.log(e.target.checked);
+  });
 };
 
 window.addEventListener("DOMContentLoaded", App);
