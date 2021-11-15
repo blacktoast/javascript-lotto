@@ -1,3 +1,4 @@
+import { handlerPurchaseLottoToggle } from "./handler/handlePurchaseResultToggle.js";
 import { initModalEvents } from "./handler/modalEvent.js";
 import { purchaseLotto } from "./handler/purchaseLotto.js";
 const $lottoNumbersToggleButton = document.querySelector(
@@ -7,9 +8,10 @@ const App = () => {
   console.log("object");
   purchaseLotto();
   initModalEvents();
-  $lottoNumbersToggleButton.addEventListener("click", (e) => {
-    console.log(e.target.checked);
-  });
+  $lottoNumbersToggleButton.addEventListener(
+    "click",
+    handlerPurchaseLottoToggle
+  );
 };
 
 window.addEventListener("DOMContentLoaded", App);

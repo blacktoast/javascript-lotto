@@ -1,5 +1,5 @@
 import { Lotto } from "../model/lotto.js";
-import { getState, setStateTicket } from "../model/state.js";
+import { getStateTickets, setStateTicket } from "../model/state.js";
 import { getPrice } from "../utils/dom.js";
 import { getRandomNumber } from "../utils/getRandomNumber.js";
 import { isValidPrice } from "../utils/valid.js";
@@ -23,7 +23,7 @@ function getLotto(tickets) {
     lottos.push(lotto);
   }
   setStateTicket(lottos);
-  getState();
+  getStateTickets();
   console.log(lottos);
 }
 

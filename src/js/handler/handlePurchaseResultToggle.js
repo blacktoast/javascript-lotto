@@ -1,3 +1,8 @@
+import {
+  renderLottoResults,
+  renderTicket,
+} from "../view/renderPurchaseLotto.js";
+
 export const handlerPurchaseLottoToggle = ({ target }) => {
-  target.checked ? a : b;
+  target.checked ? renderLottoResults() : renderTicket();
 };
