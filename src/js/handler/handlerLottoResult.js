@@ -11,16 +11,26 @@ function handlerInputNumberSlicer(event) {
 function handlerCheckLottoResult(event) {
   let winningNumbers = getInputWinningNumberByClassNameAll();
   winningNumbers = [...winningNumbers].map((e) => {
-    console.log(e.value);
     return e.value;
   });
   winningNumbers.push(getBonusByClassName().value);
-  compareLottoResult(10);
+  compareLottoResult(winningNumbers);
+}
+function compareNumbers(correct, src) {
+  let a = correct.filter((e, i) => {
+    console.log(e, src[i]);
+    return Number(e) === Number(src[i]);
+  });
+  console.log(a);
 }
 
 function compareLottoResult(number) {
   let compareNumber = getStateTickets();
-  console.log(compareNumber);
+  let sameNumber = 0;
+  let bonus = false;
+  compareNumber.map((e) => {
+    console.log(compareNumbers(number.slice(0, 6), e.numbers.slice(0, 6)));
+  });
 }
 export function checkLottoResult() {
   let resultBtn = document.querySelector(".open-result-modal-button");
