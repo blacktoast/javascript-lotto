@@ -1,12 +1,10 @@
-let state = {
+export let state = {
   inputPrice: 0,
   tickets: [],
 
   get inputPrice() {
-    return this.inputPrice;
-  },
-  set inputPrice(value) {
-    this.inputPrice = Number(value);
+    let result = this._inputPrice;
+    return result;
   },
 };
 

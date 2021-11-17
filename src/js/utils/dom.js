@@ -8,5 +8,5 @@ export function getInputWinningNumberByClassNameAll() {
 }
 
 export function getBonusByClassName() {
-  return document.querySelect(".bonus-number");
+  return document.querySelector(".bonus-number");
 }
