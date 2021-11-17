@@ -2,7 +2,12 @@ let state = {
   inputPrice: 0,
   tickets: [],
 
-  get InputPrice()
+  get inputPrice() {
+    return this.inputPrice;
+  },
+  set inputPrice(value) {
+    this.inputPrice = Number(value);
+  },
 };
 
 export function setStateInputPrice(price) {
