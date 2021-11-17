@@ -1,6 +1,8 @@
 let state = {
   inputPrice: 0,
   tickets: [],
+
+  get InputPrice()
 };
 
 export function setStateInputPrice(price) {
