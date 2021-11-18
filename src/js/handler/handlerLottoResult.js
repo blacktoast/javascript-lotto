@@ -16,21 +16,31 @@ function handlerCheckLottoResult(event) {
   winningNumbers.push(getBonusByClassName().value);
   compareLottoResult(winningNumbers);
 }
+
 function compareNumbers(correct, src) {
   let a = correct.filter((e, i) => {
     console.log(e, src[i]);
     return Number(e) === Number(src[i]);
   });
-  console.log(a);
+  return a;
 }
+
+function checkBonusNumber() {}
 
 function compareLottoResult(number) {
   let compareNumber = getStateTickets();
   let sameNumber = 0;
   let bonus = false;
   compareNumber.map((e) => {
-    console.log(compareNumbers(number.slice(0, 6), e.numbers.slice(0, 6)));
+    sameNumber = compareNumbers(
+      number.slice(0, 6),
+      e.numbers.slice(0, 6)
+    ).length;
+    if (number[6] == e.numbers[6]) bonus = true;
+    if (sameNumber == 5 && bonus) sameNumber += 2;
+    e.prize = sameNumber;
   });
+  console.log(compareNumber);
 }
 export function checkLottoResult() {
   let resultBtn = document.querySelector(".open-result-modal-button");

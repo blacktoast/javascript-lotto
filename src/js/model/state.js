@@ -1,5 +1,6 @@
 export let state = {
   inputPrice: 0,
+  prize: 0,
   tickets: [],
 
   get inputPrice() {
