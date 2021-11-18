@@ -4,10 +4,6 @@ import {
   getInputWinningNumberByClassNameAll,
 } from "../utils/dom.js";
 
-function handlerInputNumberSlicer(event) {
-  console.log(event);
-}
-
 function handlerCheckLottoResult(event) {
   let winningNumbers = getInputWinningNumberByClassNameAll();
   winningNumbers = [...winningNumbers].map((e) => {
@@ -24,8 +20,6 @@ function compareNumbers(correct, src) {
   });
   return a;
 }
-
-function checkBonusNumber() {}
 
 function compareLottoResult(number) {
   let compareNumber = getStateTickets();
