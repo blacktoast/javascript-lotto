@@ -38,6 +38,8 @@ function handlerPurchaseLotto() {
   alert("1000원 이하는 구입할수없습니다");
 }
 
+function wrapperPurchaseLotto() {}
+
 export function purchaseLotto() {
   $purchaseLottoBtn.addEventListener("click", handlerPurchaseLotto);
 }

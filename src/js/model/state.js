@@ -19,3 +19,8 @@ export function setStateTicket(states) {
 export function getStateTickets() {
   return state.tickets;
 }
+export function resetState() {
+  this.inputPrice = 0;
+  this.prize = 0;
+  this.tickets = [];
+}

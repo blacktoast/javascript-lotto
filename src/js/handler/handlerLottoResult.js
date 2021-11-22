@@ -33,26 +33,32 @@ function isInputEmpty(inputArray) {
 function makePrizeArray(tickets) {
   console.log(tickets);
   let prizes = [0, 0, 0, 0, 0];
+  let total = 0;
   tickets.map((e) => {
     switch (e.prize) {
       case 3:
         prizes[0] += 1;
+        total += 5000;
         break;
       case 4:
         prizes[1] += 1;
+        total += 50000;
         break;
       case 5:
         prizes[2] += 1;
+        total += 1500000;
         break;
       case 7:
         prizes[3] += 1;
+        total += 30000000;
         break;
       case 6:
         prizes[4] += 1;
+        total += 2000000000;
         break;
     }
   });
-  return prizes;
+  return [prizes, total];
 }
 
 function compareNumbers(correct, src) {
@@ -76,9 +82,11 @@ function calculateLottoPrize(number) {
     if (sameNumber == 5 && bonus) sameNumber += 2;
     e.prize = sameNumber;
   });
+  let prizesAndTotalMoney = makePrizeArray(compareNumber);
   return renderLottoResultsModal(
-    makePrizeArray(compareNumber),
-    compareNumber.length
+    prizesAndTotalMoney[0],
+    compareNumber.length,
+    prizesAndTotalMoney[1]
   );
 }
 export function checkLottoResult() {
