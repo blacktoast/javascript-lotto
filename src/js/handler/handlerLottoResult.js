@@ -6,11 +6,30 @@ import {
 
 function handlerCheckLottoResult(event) {
   let winningNumbers = getInputWinningNumberByClassNameAll();
+  if (isInputEmpty(winningNumbers)) {
+    return;
+  }
   winningNumbers = [...winningNumbers].map((e) => {
     return e.value;
   });
   winningNumbers.push(getBonusByClassName().value);
-  compareLottoResult(winningNumbers);
+  calculateLottoPrize(winningNumbers);
+}
+
+function isInputEmpty(inputArray) {
+  let isEmpty = false;
+  [...inputArray].map((e) => {
+    if (e.value === "") {
+      isEmpty = true;
+    }
+  });
+  alert("공백을 입력하지 마세요");
+  return isEmpty;
+}
+// 렌더링전 각 티켓의 로또 결과값을 등수 배열로 변환
+function makePrizeArray(tickets) {
+  console.log(tickets);
+  let prizes = [];
 }
 
 function compareNumbers(correct, src) {
@@ -21,7 +40,7 @@ function compareNumbers(correct, src) {
   return a;
 }
 
-function compareLottoResult(number) {
+function calculateLottoPrize(number) {
   let compareNumber = getStateTickets();
   let sameNumber = 0;
   let bonus = false;
@@ -34,7 +53,7 @@ function compareLottoResult(number) {
     if (sameNumber == 5 && bonus) sameNumber += 2;
     e.prize = sameNumber;
   });
-  console.log(compareNumber);
+  return makePrizeArray(compareNumber);
 }
 export function checkLottoResult() {
   let resultBtn = document.querySelector(".open-result-modal-button");
