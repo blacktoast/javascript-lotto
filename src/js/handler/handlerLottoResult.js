@@ -3,6 +3,8 @@ import {
   getBonusByClassName,
   getInputWinningNumberByClassNameAll,
 } from "../utils/dom.js";
+import { renderLottoResultsModal } from "../view/renderLottoResultModal.js";
+import { initModalEvents } from "./modalEvent.js";
 
 function handlerCheckLottoResult(event) {
   let winningNumbers = getInputWinningNumberByClassNameAll();
@@ -19,17 +21,38 @@ function handlerCheckLottoResult(event) {
 function isInputEmpty(inputArray) {
   let isEmpty = false;
   [...inputArray].map((e) => {
+    console.log(e.value);
     if (e.value === "") {
       isEmpty = true;
     }
   });
-  alert("공백을 입력하지 마세요");
+  if (isEmpty) alert("공백을 입력하지 마세요");
   return isEmpty;
 }
 // 렌더링전 각 티켓의 로또 결과값을 등수 배열로 변환
 function makePrizeArray(tickets) {
   console.log(tickets);
-  let prizes = [];
+  let prizes = [0, 0, 0, 0, 0];
+  tickets.map((e) => {
+    switch (e.prize) {
+      case 3:
+        prizes[0] += 1;
+        break;
+      case 4:
+        prizes[1] += 1;
+        break;
+      case 5:
+        prizes[2] += 1;
+        break;
+      case 7:
+        prizes[3] += 1;
+        break;
+      case 6:
+        prizes[4] += 1;
+        break;
+    }
+  });
+  return prizes;
 }
 
 function compareNumbers(correct, src) {
@@ -53,7 +76,10 @@ function calculateLottoPrize(number) {
     if (sameNumber == 5 && bonus) sameNumber += 2;
     e.prize = sameNumber;
   });
-  return makePrizeArray(compareNumber);
+  return renderLottoResultsModal(
+    makePrizeArray(compareNumber),
+    compareNumber.length
+  );
 }
 export function checkLottoResult() {
   let resultBtn = document.querySelector(".open-result-modal-button");
