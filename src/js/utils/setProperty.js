@@ -7,9 +7,9 @@ export function hideElement(view) {
   view.classList.add("d-none");
 }
 export const onModalShow = (modal) => {
-  $modal.classList.add("open");
+  modal.classList.add("open");
 };
 
 export const onModalClose = (modal) => {
-  $modal.classList.remove("open");
+  modal.classList.remove("open");
 };

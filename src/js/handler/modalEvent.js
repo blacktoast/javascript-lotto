@@ -5,17 +5,21 @@ import { renderRetry } from "../view/renderRetry.js";
 const $showResultButton = document.querySelector(".open-result-modal-button");
 const $modalClose = document.querySelector(".modal-close");
 const $resetBtn = document.querySelector(".resetBtn");
-const $modal = document.querySelector(".modal");
+const $modal = document.querySelector(".prize");
 
 const onReset = () => {
   console.log("s");
-  onModalClose();
+  onModalClose($modal);
   resetState();
   renderRetry();
 };
 
 export function initModalEvents() {
-  $showResultButton.addEventListener("click", onModalShow);
-  $modalClose.addEventListener("click", onModalClose);
+  $showResultButton.addEventListener("click", (e) => {
+    onModalShow($modal);
+  });
+  $modalClose.addEventListener("click", (e) => {
+    onModalClose($modal);
+  });
   $resetBtn.addEventListener("click", onReset);
 }
