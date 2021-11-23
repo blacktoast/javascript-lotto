@@ -1,5 +1,8 @@
-function htmlManualBuyInput() {
-  return `<div class="manual-buy-input">
+let $manualBuyContainer = document.querySelector(".manual-buy-container>h4");
+
+function htmlManualBuyInput(i) {
+  return `<div class="manual-buy-input mb-4">
+  <label> ${i + 1} 번 </label>
   <input type="number" class="manual-number mx-1 text-center" />
   <input type="number" class="manual-number mx-1 text-center" />
   <input type="number" class="manual-number mx-1 text-center" />
@@ -10,4 +13,11 @@ function htmlManualBuyInput() {
   </div>`;
 }
 
-export function renderManualBuyModal() {}
+export function renderManualBuyModal(tickets) {
+  let template = "";
+  for (let i = 0; i < tickets; i++) {
+    template += htmlManualBuyInput(i);
+  }
+  $manualBuyContainer.innerHTML = template;
+  console.log(template);
+}

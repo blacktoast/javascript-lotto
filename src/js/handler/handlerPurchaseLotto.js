@@ -7,7 +7,7 @@ import { renderTicket } from "../view/renderPurchaseLotto.js";
 
 let $purchaseLottoBtn = document.querySelector(".purchase-btn");
 
-export function countingTicket(price) {
+function countingTicket(price) {
   let tickets = Math.floor(price / 1000);
   let change = price % 1000;
   return [tickets, change];
