@@ -1,4 +1,4 @@
-let $manualBuyContainer = document.querySelector(".manual-buy-container>h4");
+let $manualBuyContainer = document.querySelector(".manual-buy-container");
 
 function htmlManualBuyInput(i) {
   return `<div class="manual-buy-input mb-4">
