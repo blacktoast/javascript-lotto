@@ -5,11 +5,18 @@
  */
 
 import { onModalClose, onModalShow } from "../utils/setProperty.js";
+import { getPrice } from "../utils/dom.js";
 
 const $manualBuyModalBtn = document.querySelector(".manual-buy-btn");
 const $modalClose = document.querySelector(".modal-close-manual");
 const $modal = document.querySelector(".modal-manual-buy");
 
+//구입금액가져와서 input갯수 렌더링
+function sendTicketNumbers() {
+  let allPrice = getPrice();
+}
+
+function handlerManualBuy() {}
 export function initManualBuyEvent() {
   $manualBuyModalBtn.addEventListener("click", (e) => {
     onModalShow($modal);

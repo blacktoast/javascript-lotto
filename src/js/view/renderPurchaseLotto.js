@@ -30,7 +30,7 @@ export function renderLottoResults() {
   let tickets = getStateTickets();
   let template = "";
   tickets.map((e, i) => {
-    template += `<span class="mx-1 text-4xl mt-4">${i}번  : ${e.numbers} </span>`;
+    template += `<span class="mx-1 text-2xl mt-4">${i}번  : ${e.numbers} </span>`;
   });
   $resultLottos.innerHTML = template;
 }
