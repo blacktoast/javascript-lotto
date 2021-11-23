@@ -13,7 +13,7 @@ const $manualBuyModalBtn = document.querySelector(".manual-buy-btn");
 const $modalClose = document.querySelector(".modal-close-manual");
 const $manualBuyBtn = document.querySelector(".manual-buy-button");
 const $modal = document.querySelector(".modal-manual-buy");
-
+const inputTickets = document.querySelectorAll(".manual-buy-input");
 function countingTicket(price) {
   let tickets = Math.floor(price / 1000);
   let change = price % 1000;
@@ -28,9 +28,35 @@ function sendTicketNumbers() {
   }
   alert("1000원 이상을 입력해주세요");
 }
+function getManualNumber() {
+  const inputTickets = document.querySelectorAll(".manual-buy-input");
+  let tickets = [];
+  [...inputTickets].map((e) => {
+    tickets.push(
+      [...e.querySelectorAll(".manual-number")].map((n) => {
+        return n.value;
+      })
+    );
+  });
+  return checkEmptyArrValue(tickets);
+}
+function checkEmptyArrValue(tickets) {
+  let isEmpty = false;
+  let emptyNum = 0;
+  tickets.map((e) => {
+    isEmpty = false;
+    console.log(e);
+    e.forEach((n) => {
+      console.log(n.value);
+      if (n === "") isEmpty = true;
+    });
+    if (isEmpty) emptyNum++;
+  });
+  console.log(emptyNum);
+}
 
 function handlerManualBuy() {
-  console.log("test");
+  getManualNumber();
 }
 export function initManualBuyEvent() {
   $manualBuyModalBtn.addEventListener("click", (e) => {
