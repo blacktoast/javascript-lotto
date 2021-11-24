@@ -9,6 +9,9 @@ import { onModalClose, onModalShow } from "../utils/setProperty.js";
 import { getPrice } from "../utils/dom.js";
 import { isValidPrice } from "../utils/valid.js";
 import { renderManualBuyModal } from "../view/renderManualBuy.js";
+import { getLotto } from "../utils/common.js";
+import { Lotto } from "../model/lotto.js";
+import { addStateTicket } from "../model/state.js";
 
 const $manualBuyModalBtn = document.querySelector(".manual-buy-btn");
 const $modalClose = document.querySelector(".modal-close-manual");
@@ -54,7 +57,6 @@ function checkEmptyArrNumber(tickets) {
     if (isEmpty) emptyNum++;
   });
   return emptyNum;
-  console.log(emptyNum, tickets.length);
 }
 function removeEmptyItemOfManualTickets(tickets) {
   let isEmpty;
@@ -73,8 +75,9 @@ function removeEmptyItemOfManualTickets(tickets) {
 function handlerManualBuy() {
   let tickets = getManualNumber();
   let autoBuyTicketNumber = checkEmptyArrNumber(tickets);
-  tickets = removeEmptyItemOfManualTickets(tickets);
-  if (confirmNumOfBuyTicketType(tickets.length, autoBuyTicketNumber)) {
+  let manualTickets = removeEmptyItemOfManualTickets(tickets);
+  if (confirmNumOfBuyTicketType(manualTickets.length, autoBuyTicketNumber)) {
+    storeBuyTicketsState(manualTickets);
     getLotto(autoBuyTicketNumber);
   }
 }
@@ -87,8 +90,11 @@ function confirmNumOfBuyTicketType(manual, auto) {
 function storeBuyTicketsState(tickets) {
   let lottos = [];
   for (let i = 0; i < tickets.length; i++) {
-    
+    let lotto = new Lotto(tickets[i]);
+    lottos.push(lotto);
   }
+
+  addStateTicket(lottos);
 }
 
 export function initManualBuyEvent() {

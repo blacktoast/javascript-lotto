@@ -14,6 +14,4 @@ export function getLotto(tickets) {
   }
 
   addStateTicket(lottos);
-  getStateTickets();
-  console.log(lottos);
 }
