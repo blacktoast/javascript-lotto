@@ -39,7 +39,7 @@ function getManualNumber() {
       })
     );
   });
-  return checkEmptyArrNumber(tickets);
+  return tickets;
 }
 function checkEmptyArrNumber(tickets) {
   let isEmpty = false;
@@ -53,13 +53,33 @@ function checkEmptyArrNumber(tickets) {
     });
     if (isEmpty) emptyNum++;
   });
+  return emptyNum;
   console.log(emptyNum, tickets.length);
 }
-
+function removeEmptyItemOfManualTickets(tickets) {
+  let isEmpty;
+  let newTicket = tickets.filter((e) => {
+    isEmpty = false;
+    console.log(e);
+    e.forEach((n) => {
+      console.log(n.value);
+      if (n === "") isEmpty = true;
+    });
+    if (!isEmpty) return e;
+  });
+  return newTicket;
+}
 
 function storeBuyTicketsState() {}
 function handlerManualBuy() {
-  getManualNumber();
+  let tickets = getManualNumber();
+  let emptyNum = checkEmptyArrNumber(tickets);
+  tickets = removeEmptyItemOfManualTickets(tickets);
+  alertNumOfBuyTicketType(tickets.length, emptyNum);
+}
+function alertNumOfBuyTicketType(manual, auto) {
+  alert(`빈칸으로 있는 표는 자동으로 구매됩니다
+          수동 ${manual} 장 , 자동 ${auto} 장 구매합니다`);
 }
 export function initManualBuyEvent() {
   $manualBuyModalBtn.addEventListener("click", (e) => {
