@@ -11,6 +11,10 @@ export function setStateInputPrice(price) {
 export function setStateTicket(states) {
   state.tickets = states;
 }
+export function addStateTicket(states) {
+  let dest = state.tickets.concat(states);
+  state.tickets = dest;
+}
 export function getStateTickets() {
   return state.tickets;
 }

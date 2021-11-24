@@ -70,17 +70,27 @@ function removeEmptyItemOfManualTickets(tickets) {
   return newTicket;
 }
 
-function storeBuyTicketsState() {}
 function handlerManualBuy() {
   let tickets = getManualNumber();
-  let emptyNum = checkEmptyArrNumber(tickets);
+  let autoBuyTicketNumber = checkEmptyArrNumber(tickets);
   tickets = removeEmptyItemOfManualTickets(tickets);
-  alertNumOfBuyTicketType(tickets.length, emptyNum);
+  if (confirmNumOfBuyTicketType(tickets.length, autoBuyTicketNumber)) {
+    getLotto(autoBuyTicketNumber);
+  }
 }
-function alertNumOfBuyTicketType(manual, auto) {
-  alert(`빈칸으로 있는 표는 자동으로 구매됩니다
-          수동 ${manual} 장 , 자동 ${auto} 장 구매합니다`);
+function confirmNumOfBuyTicketType(manual, auto) {
+  let isBuy = confirm(`빈칸으로 있는 표는 자동으로 구매됩니다
+          수동 ${manual} 장 , 자동 ${auto} 장 구매합니다
+                  구입 하시겠습니까?`);
+  return isBuy;
 }
+function storeBuyTicketsState(tickets) {
+  let lottos = [];
+  for (let i = 0; i < tickets.length; i++) {
+    
+  }
+}
+
 export function initManualBuyEvent() {
   $manualBuyModalBtn.addEventListener("click", (e) => {
     onModalShow($modal);

@@ -1,6 +1,10 @@
 import { Lotto } from "../model/lotto.js";
 import { getRandomNumber } from "../utils/getRandomNumber.js";
-import { getStateTickets, setStateTicket } from "../model/state.js";
+import {
+  addStateTicket,
+  getStateTickets,
+  setStateTicket,
+} from "../model/state.js";
 
 export function getLotto(tickets) {
   let lottos = [];
@@ -8,7 +12,8 @@ export function getLotto(tickets) {
     let lotto = new Lotto(getRandomNumber());
     lottos.push(lotto);
   }
-  setStateTicket(lottos);
+
+  addStateTicket(lottos);
   getStateTickets();
   console.log(lottos);
 }
