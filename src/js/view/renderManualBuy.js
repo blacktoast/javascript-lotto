@@ -1,8 +1,8 @@
 let $manualBuyContainer = document.querySelector(".manual-buy-container");
 
 function htmlManualBuyInput(i) {
-  return `<div class="manual-buy-input mb-4">
-  <label> ${i + 1} 번 </label>
+  return `<div class="manual-buy-input mb-4 d-flex">
+  <label class="flex-shrink"> ${i + 1} 번 </label>
   <input type="number" class="manual-number mx-1 text-center" />
   <input type="number" class="manual-number mx-1 text-center" />
   <input type="number" class="manual-number mx-1 text-center" />

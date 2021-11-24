@@ -9,3 +9,5 @@ function generateRandomNumber() {
 export function getRandomNumber() {
   return generateRandomNumber();
 }
+
+

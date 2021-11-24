@@ -1,7 +1,8 @@
 /**
- *  [] 모달창을 만들어서 수동 구매 입력창 만들기
- * [] 수동구입 금액을 어디서 받지?
+ *  [x] 모달창을 만들어서 수동 구매 입력창 만들기
+ * [x] 수동구입 금액을 어디서 받지?
  *  - 구입금액에서 가져와서 받기
+ * []
  */
 
 import { onModalClose, onModalShow } from "../utils/setProperty.js";
@@ -38,9 +39,9 @@ function getManualNumber() {
       })
     );
   });
-  return checkEmptyArrValue(tickets);
+  return checkEmptyArrNumber(tickets);
 }
-function checkEmptyArrValue(tickets) {
+function checkEmptyArrNumber(tickets) {
   let isEmpty = false;
   let emptyNum = 0;
   tickets.map((e) => {
@@ -52,9 +53,11 @@ function checkEmptyArrValue(tickets) {
     });
     if (isEmpty) emptyNum++;
   });
-  console.log(emptyNum);
+  console.log(emptyNum, tickets.length);
 }
 
+
+function storeBuyTicketsState() {}
 function handlerManualBuy() {
   getManualNumber();
 }

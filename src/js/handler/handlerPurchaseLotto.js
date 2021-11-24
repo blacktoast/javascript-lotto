@@ -1,7 +1,5 @@
-import { Lotto } from "../model/lotto.js";
-import { getStateTickets, setStateTicket } from "../model/state.js";
+import { getLotto } from "../utils/common.js";
 import { getPrice } from "../utils/dom.js";
-import { getRandomNumber } from "../utils/getRandomNumber.js";
 import { isValidPrice } from "../utils/valid.js";
 import { renderTicket } from "../view/renderPurchaseLotto.js";
 
@@ -18,22 +16,13 @@ function alertPurchaseTickets(tickets, change) {
 남은 거스름돈은 ${change} 원 입니다`);
 }
 //티켓수로 for문을 돌려서 랜덤수를 생성해서 로또이켓을 생성한다.
-function getLotto(tickets) {
-  let lottos = [];
-  for (var i = 0; i < tickets; i++) {
-    let lotto = new Lotto(getRandomNumber());
-    lottos.push(lotto);
-  }
-  setStateTicket(lottos);
-  getStateTickets();
-  console.log(lottos);
-}
 
 function handlerPurchaseLotto() {
   let price = Number(getPrice());
   if (isValidPrice(price)) {
     let tickets, change;
     [tickets, change] = countingTicket(price);
+
     alertPurchaseTickets(tickets, change);
     getLotto(tickets);
     renderTicket(tickets);
